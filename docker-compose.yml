@@ -7,10 +7,10 @@ services:
     ports:
       - 5000:80
     depends_on:
-      - redis
+      - redis_img
     restart: always
     links:
-      - redis
+      - redis_img
 
   client:
     container_name: client
@@ -21,8 +21,8 @@ services:
       - backend
     restart: always
 
-  redis:
-    container_name: redis
+  redis_img:
+    container_name: redis_img
     image: redis
     ports:
       - 6379:6379
