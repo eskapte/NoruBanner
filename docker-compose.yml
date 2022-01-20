@@ -10,7 +10,7 @@ services:
       - redis_img
     restart: always
     links:
-      - redis_img
+      - redis
 
   client:
     container_name: client
@@ -21,8 +21,8 @@ services:
       - backend
     restart: always
 
-  redis_img:
-    container_name: redis_img
+  redis:
+    container_name: redis
     image: redis
     ports:
       - 6379:6379
