@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: backend
+    build: NoruBannerAPI/
+    ports:
+      - 5000:80
+    depends_on:
+      - redis
+    restart: always
+    links:
+      - redis
+
+  client:
+    container_name: client
+    build: client-app/
+    ports:
+      - 3000:80
+    depends_on:
+      - backend
+    restart: always
+
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - 6379:6379
+    restart: always
